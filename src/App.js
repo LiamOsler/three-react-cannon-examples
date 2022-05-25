@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import { createRoot } from 'react-dom/client'
 import React, { useRef, useState, Suspense } from 'react'
-import { Button, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useCamera, useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -39,10 +38,6 @@ function Suzanne(props) {
       <meshNormalMaterial />
     </mesh>
   )
-}
-
-function SuzanneArmy(){
-
 }
 
 function Plane(props) {
@@ -97,40 +92,13 @@ function App() {
             <Physics>
               
               <Plane />
-              <Cube position={[-2,3,0]}/>
-              <Cube position={[-2,5,0]}/>
               {suzanneObjects}
-
-
-
             </Physics>
           </Canvas>
         
         </div>
 
         <div className= "App-overlay">
-
-          <Navbar color="faded" light>
-              <NavbarBrand className="me-auto" href="/">
-                Three-React-Fiber-Bootstrap
-              </NavbarBrand>
-              <NavbarToggler className="me-2" onClick={function noRefCheck(){}}/>
-              <Collapse navbar>
-                <Nav navbar>
-                  <NavItem>
-                    <NavLink href="/components/">
-                      Components
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">
-                      GitHub
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-              </Collapse>
-            </Navbar>
-          <Button color="danger">Danger!</Button>
         </div>
       </div>
       
