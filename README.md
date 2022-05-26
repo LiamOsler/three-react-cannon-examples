@@ -52,7 +52,7 @@ function App() {
             <ambientLight intensity={0.5} />
             <pointLight color="white" intensity={1} position={[10, 10, 10]} />
             <CameraControls />
-              <Suzanne position = {[0, 2, 0]} rotation = {[0, 0, 0]} model = {suzanneMesh}/>
+            <Suzanne position = {[0, 2, 0]} rotation = {[0, 0, 0]} model = {suzanneMesh}/>
           </Canvas>
         </div>
         <div className= "App-overlay">
