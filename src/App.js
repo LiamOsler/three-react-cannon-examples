@@ -1,7 +1,8 @@
 import './App.css';
 
 
-import React, { useRef,} from 'react'
+import { createRoot } from 'react-dom/client'
+import React, { useRef, useState, Suspense } from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -81,6 +82,8 @@ function App() {
         
         </div>
 
+        <div className= "App-overlay">
+        </div>
       </div>
       
 
