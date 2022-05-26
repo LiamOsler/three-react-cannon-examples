@@ -1,13 +1,12 @@
 import './App.css';
 
 
-import { createRoot } from 'react-dom/client'
-import React, { useRef, useState, Suspense } from 'react'
+import React, { useRef } from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Physics, usePlane, useTrimesh } from '@react-three/cannon'
+import { Physics, usePlane } from '@react-three/cannon'
 import { threeToCannon, ShapeType } from 'three-to-cannon';
 
 import suzanne from './suzanne.gltf'
@@ -28,10 +27,9 @@ const CameraControls = () => {
 
 function Suzanne(props) {
   const result = threeToCannon(props.model, {type: ShapeType.MESH});
-  const [ref] = useTrimesh(() => ({ args: [result.shape.vertices, result.shape.vertices], mass: 10, position: props.position, rotation: props.rotation}))
   return( 
     <mesh >
-      <primitive ref={ref} object={props.model}  />
+      <primitive object={props.model} position={props.position}  />
       <meshNormalMaterial />
     </mesh>
   )
@@ -50,15 +48,7 @@ function Plane(props) {
 function App() {
   const gltf = useLoader(GLTFLoader, suzanne)
   const suzanneMesh = gltf.scene.children[2]
-  const suzanneObjects = []
-  for(let i = -2; i < 2; i ++){
-    for(let j = -2; j < 2; j ++){
-      const suzanneClone = suzanneMesh.clone()
-      suzanneObjects.push(
-        <Suzanne position = {[i*10, 3, j*10]} rotation = {[i/4, j/4, i*j/4]} model = {suzanneClone}/>
-      )
-    }
-  } 
+
   return (
     
     <div className="App">
@@ -76,12 +66,11 @@ function App() {
             <CameraControls />
             <Physics>
               <Plane />
-              {suzanneObjects}
+              <Suzanne position = {[0, 2, 0]} rotation = {[0, 0, 0]} model = {suzanneMesh}/>
             </Physics>
           </Canvas>
         
         </div>
-
         <div className= "App-overlay">
         </div>
       </div>
