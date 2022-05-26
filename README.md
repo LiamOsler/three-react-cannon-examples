@@ -1,4 +1,9 @@
-# App.js
+# React Three Cannon Box example
+
+Live Demo:
+https://liamosler.ca/demos/threejs/boxes-cannon/
+
+App.js code:
 ```jsx
 import './App.css';
 
