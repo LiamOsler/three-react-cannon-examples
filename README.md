@@ -1,5 +1,16 @@
+
+# Instructions:
+View the various feature branches to see demonstrations of the 
+
 # Live Demo:
-https://liamosler.ca/demos/threejs/trimesh-cannon/
+
+### Three-Cannon
+#### Cubes:
+ https://github.com/LiamOsler/three-react-cannon-examples/tree/cubes
+
+#### Trimesh:
+Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/trimesh
+Live Demo: https://liamosler.ca/demos/threejs/trimesh-cannon/
 
 # React App installation instructions:
 ## Getting Started with Create React App
