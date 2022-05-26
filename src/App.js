@@ -1,13 +1,11 @@
 import './App.css';
 
 
-import React, { useRef } from 'react'
+import React, { useRef, useState, Suspense } from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Physics, usePlane } from '@react-three/cannon'
-import { threeToCannon, ShapeType } from 'three-to-cannon';
 
 import suzanne from './suzanne.gltf'
 
@@ -26,7 +24,6 @@ const CameraControls = () => {
 
 
 function Suzanne(props) {
-  const result = threeToCannon(props.model, {type: ShapeType.MESH});
   return( 
     <mesh >
       <primitive object={props.model} position={props.position}  />
@@ -35,19 +32,10 @@ function Suzanne(props) {
   )
 }
 
-function Plane(props) {
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
-  return (
-    <mesh ref={ref}>
-      <planeGeometry args={[100, 100]} />
-    </mesh>
-  )
-}
-
 
 function App() {
   const gltf = useLoader(GLTFLoader, suzanne)
-  const suzanneMesh = gltf.scene.children[2]
+  const suzanneMesh = gltf.scene.children[0]
 
   return (
     
@@ -64,13 +52,11 @@ function App() {
             <ambientLight intensity={0.5} />
             <pointLight color="white" intensity={1} position={[10, 10, 10]} />
             <CameraControls />
-            <Physics>
-              <Plane />
               <Suzanne position = {[0, 2, 0]} rotation = {[0, 0, 0]} model = {suzanneMesh}/>
-            </Physics>
           </Canvas>
         
         </div>
+
         <div className= "App-overlay">
         </div>
       </div>
