@@ -1,8 +1,8 @@
 {
-  "name": "vehicles",
+  "name": "box-mesh-cannon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/demos/threejs/trimesh-cannon",
+  "homepage": "/demos/threejs/boxes-cannon",
   "dependencies": {
     "@react-three/cannon": "^6.3.0",
     "@react-three/drei": "^9.11.3",
