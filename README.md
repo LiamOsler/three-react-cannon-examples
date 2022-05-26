@@ -5,6 +5,8 @@ View the various feature branches to see source code of the various examples, li
 ## Loading Models:
 ### GLTF Loader:
 Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/GLTFLoader
+Live Demo: https://liamosler.ca/demos/threejs/GLTFLoader/
+
 
 ### Instancing objects in a GLTF file:
 Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/GLTFInstancing
