@@ -30,7 +30,7 @@ function Box(props) {
 
   return (
     <mesh position={props.position} ref={ref}>
-      <boxBufferGeometry args={[.1, .1, .1]} attach="geometry" />
+      <boxBufferGeometry args={[1,1,1]} attach="geometry" />
       <meshPhongMaterial color={props.color} attach="material" />
     </mesh>
   )
@@ -92,7 +92,7 @@ function App() {
       <div className="App-background">
         <div className = "App-body">
           
-          <Canvas >
+          <Canvas camera={{ fov: 45, position: [10, 40, 0]}}>
             <ambientLight intensity={0.5} />
             <pointLight color="white" intensity={1} position={[10, 10, 10]} />
             <CameraControls />
