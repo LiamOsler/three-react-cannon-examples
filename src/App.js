@@ -1,14 +1,12 @@
 import './App.css';
 
 
-import { createRoot } from 'react-dom/client'
-import React, { useRef, useState, Suspense } from 'react'
+import React, { useRef, } from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Physics, usePlane, useTrimesh } from '@react-three/cannon'
-import { threeToCannon, ShapeType } from 'three-to-cannon';
+import { Physics, usePlane } from '@react-three/cannon'
 
 import suzanne from './suzanne.gltf'
 
