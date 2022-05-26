@@ -1,4 +1,4 @@
-# React Three Cannon Box example
+# React Three Trimesh example
 
 Live Demo:
 https://liamosler.ca/demos/threejs/trimesh-cannon/
