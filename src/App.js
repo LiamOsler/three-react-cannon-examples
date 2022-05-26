@@ -22,7 +22,7 @@ const CameraControls = () => {
 };
 
 function Box(props) {
-  const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0], ...props }))
+  const [ref] = useBox(() => ({ mass: 1, position: props.position, ...props }))
 
   return (
     <mesh position={props.position} ref={ref}>
@@ -49,7 +49,7 @@ function App() {
   for(let i = -6; i < 6; i ++){
     for(let j = -6; j < 6; j ++){
       cubes.push(
-        <Box color="#18a36e" position = {[i/2, j+3, i*j]} rotation = {[i/4, j/4, i*j/4]} />
+        <Box color="#18a36e" position = {[i*2, 30, j*2]} rotation = {[i/4, j/4, i*j/4]} />
       )
     }
   }
@@ -64,7 +64,7 @@ function App() {
 
       <div className="App-background">
         <div className = "App-body">
-          <Canvas camera={{ fov: 45, position: [10, 40, 0]}}>
+          <Canvas camera={{ fov: 45, position: [0, 40, 0]}}>
             <ambientLight intensity={0.5} />
             <pointLight color="white" intensity={1} position={[10, 10, 10]} />
             <CameraControls />

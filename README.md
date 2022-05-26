@@ -1,3 +1,92 @@
+# App.js
+```jsx
+import './App.css';
+
+
+import React, { useRef } from 'react'
+import { extend, Canvas, useFrame, useThree } from '@react-three/fiber'
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Physics, usePlane, useBox } from '@react-three/cannon'
+
+
+
+extend({ OrbitControls });
+
+const CameraControls = () => {
+  const {
+    camera,
+    gl: { domElement },
+  } = useThree();
+  const controls = useRef();
+  controls.minDistance = 20;
+  useFrame((state) => controls.current.update());
+  return <orbitControls ref={controls} args={[camera, domElement]} />;
+};
+
+function Box(props) {
+  const [ref] = useBox(() => ({ mass: 1, position: props.position, ...props }))
+
+  return (
+    <mesh position={props.position} ref={ref}>
+      <boxBufferGeometry args={[1,1,1]} attach="geometry" />
+      <meshPhongMaterial color={props.color} attach="material" />
+    </mesh>
+  )
+}
+
+
+function Plane(props) {
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
+  return (
+    <mesh ref={ref}>
+      <planeGeometry args={[100, 100]} />
+    </mesh>
+  )
+}
+
+
+function App() {
+
+  const cubes = [];
+  for(let i = -6; i < 6; i ++){
+    for(let j = -6; j < 6; j ++){
+      cubes.push(
+        <Box color="#18a36e" position = {[i*2, 30, j*2]} rotation = {[i/4, j/4, i*j/4]} />
+      )
+    }
+  }
+  
+  return (
+    
+    <div className="App">
+
+      <header className="App-header">
+
+      </header>
+
+      <div className="App-background">
+        <div className = "App-body">
+          <Canvas camera={{ fov: 45, position: [0, 40, 0]}}>
+            <ambientLight intensity={0.5} />
+            <pointLight color="white" intensity={1} position={[10, 10, 10]} />
+            <CameraControls />
+            <Physics>
+              <Plane />
+              {cubes}
+            </Physics>
+          </Canvas>
+        </div>
+
+        <div className= "App-overlay">
+        </div>
+      </div>
+    
+    </div>
+  );
+}
+export default App;
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -28,43 +117,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
