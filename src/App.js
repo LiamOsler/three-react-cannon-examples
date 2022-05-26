@@ -95,14 +95,8 @@ function App() {
             <pointLight color="white" intensity={1} position={[10, 10, 10]} />
             <CameraControls />
             <Physics>
-              
               <Plane />
-              <Cube position={[-2,3,0]}/>
-              <Cube position={[-2,5,0]}/>
               {suzanneObjects}
-
-
-
             </Physics>
           </Canvas>
         
