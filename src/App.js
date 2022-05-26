@@ -27,11 +27,9 @@ const CameraControls = () => {
 
 
 function Suzanne(props) {
-  const result = threeToCannon(props.model, {type: ShapeType.MESH});
-  const [ref] = useTrimesh(() => ({ args: [result.shape.vertices, result.shape.vertices], mass: 10, position: props.position, rotation: props.rotation}))
   return( 
     <mesh >
-      <primitive ref={ref} object={props.model}  />
+      <primitive object={props.model} position={props.position} rotation={props.rotation}  />
       <meshNormalMaterial />
     </mesh>
   )
