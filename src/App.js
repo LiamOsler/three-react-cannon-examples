@@ -1,17 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 
-import { createRoot } from 'react-dom/client'
-import React, { useRef, useState, Suspense } from 'react'
-import { Button, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import React, { useRef,} from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { useCamera, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Physics, usePlane, useBox, useConvexPolyhedron, useTrimesh } from '@react-three/cannon'
+import { Physics, usePlane, useTrimesh } from '@react-three/cannon'
 import { threeToCannon, ShapeType } from 'three-to-cannon';
 
 import suzanne from './suzanne.gltf'
@@ -41,10 +36,6 @@ function Suzanne(props) {
   )
 }
 
-function SuzanneArmy(){
-
-}
-
 function Plane(props) {
   const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props }))
   return (
@@ -53,18 +44,6 @@ function Plane(props) {
     </mesh>
   )
 }
-
-function Cube(props) {
-  const [ref] = useBox(() => ({ mass: 10, position: props.position, ...props }))
-  return (
-    <mesh ref={ref} >
-      <boxGeometry />
-      <meshNormalMaterial />
-    </mesh>
-  )
-}
-
-
 
 
 function App() {
@@ -102,30 +81,6 @@ function App() {
         
         </div>
 
-        <div className= "App-overlay">
-
-          <Navbar color="faded" light>
-              <NavbarBrand className="me-auto" href="/">
-                Three-React-Fiber-Bootstrap
-              </NavbarBrand>
-              <NavbarToggler className="me-2" onClick={function noRefCheck(){}}/>
-              <Collapse navbar>
-                <Nav navbar>
-                  <NavItem>
-                    <NavLink href="/components/">
-                      Components
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">
-                      GitHub
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-              </Collapse>
-            </Navbar>
-          <Button color="danger">Danger!</Button>
-        </div>
       </div>
       
 
