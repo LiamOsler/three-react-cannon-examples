@@ -1,13 +1,12 @@
 import './App.css';
 
 
-import { createRoot } from 'react-dom/client'
 import React, { useRef, useState, Suspense } from 'react'
 import { extend, Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Physics, usePlane, useTrimesh } from '@react-three/cannon'
+import { Physics, usePlane, useTrimesh, useBox } from '@react-three/cannon'
 import { threeToCannon, ShapeType } from 'three-to-cannon';
 
 import suzanne from './suzanne.gltf'
@@ -21,9 +20,21 @@ const CameraControls = () => {
     gl: { domElement },
   } = useThree();
   const controls = useRef();
+  controls.minDistance = 20;
   useFrame((state) => controls.current.update());
   return <orbitControls ref={controls} args={[camera, domElement]} />;
 };
+
+function Box(props) {
+  const [ref] = useBox(() => ({ mass: 1, position: [0, 5, 0], ...props }))
+
+  return (
+    <mesh position={props.position} ref={ref}>
+      <boxBufferGeometry args={[.1, .1, .1]} attach="geometry" />
+      <meshPhongMaterial color={props.color} attach="material" />
+    </mesh>
+  )
+}
 
 
 function Suzanne(props) {
@@ -55,10 +66,21 @@ function App() {
     for(let j = -2; j < 2; j ++){
       const suzanneClone = suzanneMesh.clone()
       suzanneObjects.push(
-        <Suzanne position = {[i*10, 3, j*10]} rotation = {[i/4, j/4, i*j/4]} model = {suzanneClone}/>
+        <Suzanne position = {[i*2, 3, j*10]} rotation = {[i/4, j/4, i*j/4]} model = {suzanneClone}/>
       )
     }
-  } 
+  }
+
+  const cubes = [];
+  for(let i = -6; i < 6; i ++){
+    for(let j = -6; j < 6; j ++){
+      cubes.push(
+        <Box color="#18a36e" position = {[i/2, j+3, i*j]} rotation = {[i/4, j/4, i*j/4]} />
+
+      )
+    }
+  }
+  
   return (
     
     <div className="App">
@@ -76,13 +98,14 @@ function App() {
             <CameraControls />
             <Physics>
               <Plane />
-              {suzanneObjects}
+              {cubes}
             </Physics>
           </Canvas>
         
         </div>
 
         <div className= "App-overlay">
+
         </div>
       </div>
       

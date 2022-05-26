@@ -2,6 +2,7 @@
   "name": "vehicles",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/demos/threejs/trimesh-cannon",
   "dependencies": {
     "@react-three/cannon": "^6.3.0",
     "@react-three/drei": "^9.11.3",
@@ -23,8 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
