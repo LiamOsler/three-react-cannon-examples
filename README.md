@@ -1,12 +1,12 @@
 
 # Instructions:
-View the various feature branches to see demonstrations of the 
+View the various feature branches to see source code of the various examples, linked below: 
 
-# Live Demo:
 
-### Three-Cannon
+### Three-Cannon:
 #### Cubes:
- https://github.com/LiamOsler/three-react-cannon-examples/tree/cubes
+Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/cubes
+Live Demo: https://liamosler.ca/demos/threejs/boxes-cannon/
 
 #### Trimesh:
 Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/trimesh
