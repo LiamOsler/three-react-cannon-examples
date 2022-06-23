@@ -5,14 +5,14 @@ https://github.com/LiamOsler/three-react-cannon-examples/branches
 
 ## Demonstrations completed to date:
 * Setup:
--- Loading models using .gtlf files
--- Instancing objects in a scene
--- Lighting effects and fogs
+- Loading models using .gtlf files
+- Instancing objects in a scene
+- Lighting effects and fogs
 * Physics:
--- Cubes
--- Other primitives
--- Convex Hull Shapes
--- Trimesh
+- Cubes
+- Other primitives
+- Convex Hull Shapes
+- Trimesh
 
 ## Loading Models:
 ### GLTF Loader:
