@@ -4,11 +4,11 @@ View the various feature branches to see source code of the various examples, li
 https://github.com/LiamOsler/three-react-cannon-examples/branches
 
 ## Demonstrations completed to date:
-- Setup:
+* Setup:
 -- Loading models using .gtlf files
 -- Instancing objects in a scene
 -- Lighting effects and fogs
-- Physics:
+* Physics:
 -- Cubes
 -- Other primitives
 -- Convex Hull Shapes
