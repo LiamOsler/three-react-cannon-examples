@@ -1,6 +1,18 @@
 
 # Instructions:
-View the various feature branches to see source code of the various examples, linked below: 
+View the various feature branches to see source code of the various examples, linked below:
+https://github.com/LiamOsler/three-react-cannon-examples/branches
+
+## Demonstrations completed to date:
+- Setup:
+-- Loading models using .gtlf files
+-- Instancing objects in a scene
+-- Lighting effects and fogs
+- Physics:
+-- Cubes
+-- Other primitives
+-- Convex Hull Shapes
+-- Trimesh
 
 ## Loading Models:
 ### GLTF Loader:
@@ -12,7 +24,6 @@ Live Demo: https://liamosler.ca/demos/threejs/GLTFLoader/
 ### Instancing objects in a GLTF file:
 Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/GLTFInstancing
 
-
 ## Physics:
 ### Three-Cannon:
 #### Cubes:
@@ -20,7 +31,7 @@ Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/cubes
 
 Live Demo: https://liamosler.ca/demos/threejs/boxes-cannon/
 
-#### Trimesh:
+#### Trimesh collisions:
 Git Repo: https://github.com/LiamOsler/three-react-cannon-examples/tree/trimesh
 
 Live Demo: https://liamosler.ca/demos/threejs/trimesh-cannon/
